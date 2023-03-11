@@ -19,3 +19,14 @@ chrome.runtime.onMessage.addListener((request, sender, sendResponse) => {
     });
   }
 });
+
+
+chrome.tabs.onUpdated.addListener((tabId, tab) => {
+  if (tab.url && tab.url.includes("linkedin.com/jobs/")) {
+    chrome.tabs.sendMessage(tabId, {
+      type: "NEW",
+      jobSearchPage: true
+    });
+  }
+});
+
