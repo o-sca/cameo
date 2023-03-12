@@ -1,0 +1,99 @@
+/* Normalize CSS */
+*,
+*::before,
+*::after {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+/* Colours */
+:root {
+  --primary: #2640FF;
+  --primary-text: #0C1A7D;
+  --secondary: #F7C32F;
+  --secondary-light: #FDEDC1;
+  --white: #FFF;
+}
+
+/* Typography */
+body {
+  font-family: 'Inter', sans-serif;
+  font-weight: 400;
+  color: var(--primary-text);
+  text-align: center;
+}
+
+h1, p, .p {
+  font-size: 0.9rem;
+  line-height: 1.44rem;
+  font-weight: 400;
+}
+
+h2 {
+  font-size: 1.1rem;
+  margin-bottom: 0.5rem;
+  font-weight: 400;
+}
+
+/* Layout */
+body {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.container {
+  width: 21rem;
+  height: 29rem;
+  padding: 2rem 2.5rem;
+  background: linear-gradient(var(--white), var(--secondary-light));
+}
+
+.container > div:first-child,
+.container > div:nth-child(3) {
+  margin-bottom: 2.5rem;
+}
+
+/* Content */
+h1 {
+  font-style: italic;
+}
+
+img {
+  width: 8.75rem;
+  height: auto;
+  margin-bottom: 0.8rem;
+}
+
+hr {
+  border: 0.04rem solid var(--secondary);
+  margin: 1rem auto;
+}
+
+.how-it-works {
+  text-align: left;
+  margin-bottom: 2rem;
+}
+
+button {
+  background-color: var(--primary);
+  border: 0;
+  padding: 1rem;
+  border-radius: 0.63rem;
+  font-weight: 600;
+  color: var(--white);
+  cursor: pointer;
+  margin: 0 auto;
+  display: block;
+  font-size: 0.9rem;
+}
+
+button:hover {
+  transform: scale(1.05);
+  background-color: var(--primary-text);
+}
+
+.copyright {
+  font-size: 0.8rem;
+}

@@ -16,18 +16,22 @@
     "default_title": "Cameo",
     "default_popup": "popup.html"
   },
-  "permissions": [
-    "storage"
-  ],
+  "permissions": ["storage", "activeTab"],
   "content_scripts": [
     {
       "matches": [
-        "<all_urls>"
+        "https://www.linkedin.com/jobs/collections/recommended/*",
+        "https://www.linkedin.com/jobs/search*"
       ],
       "run_at": "document_idle",
-      "js": [
-        "contentScript.js"
-      ]
+      "js": ["contentScript.js", "extensionLogin.js", "popup.js"],
+      "css": ["styles.css"]
+    }
+  ],
+  "web_accessible_resources": [
+    {
+      "resources": ["popup.html"],
+      "matches": ["https://www.linkedin.com/*"]
     }
   ]
 }

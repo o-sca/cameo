@@ -1,43 +1,70 @@
-'use strict';
+import postRequest from './request';
 
-// Content script file will run in the context of web page.
-// With content script you can manipulate the web pages using
-// Document Object Model (DOM).
-// You can also pass information to the parent extension.
+// Create a MutationObserver object
+const observer = new MutationObserver((mutations) => {
+  // Iterate through all the mutations
+  mutations.forEach((mutation) => {
+    // Check if any new nodes were added
+    if (mutation.addedNodes) {
+      // Iterate through all the newly added nodes
+      mutation.addedNodes.forEach((node) => {
+        // Check if the node has the class name "my-class"
+        if (node.className === 'display-flex') {
+          // Create a button element
+          // const button = document.createElement("button");
+          // button.textContent = "Click me!";
+          // button.className = "my-button";
 
-// We execute this script by making an entry in manifest.json file
-// under `content_scripts` property
+          const button = document.createElement('img');
+          button.src = 'test.png';
+          button.alt = 'My clickable image';
+          // image.className = "my-image";
+          // button.classList.add("my-image");
 
-// For more information on Content Scripts,
-// See https://developer.chrome.com/extensions/content_scripts
+          button.className = 'my-image';
 
-// Log `title` of current active web page
-const pageTitle = document.head.getElementsByTagName('title')[0].innerHTML;
-console.log(
-  `Page title is: '${pageTitle}' - evaluated by Chrome extension's 'contentScript.js' file`
-);
+          // Get the text content of the parent div
 
-// Communicate with background file by sending a message
-chrome.runtime.sendMessage(
-  {
-    type: 'GREETINGS',
-    payload: {
-      message: 'Hello, my name is Con. I am from ContentScript.',
-    },
-  },
-  (response) => {
-    console.log(response.message);
-  }
-);
+          // Add a click event listener to the button to log the parent div text
+          button.addEventListener('click', async () => {
+            const parentDiv = node.parentElement.parentElement;
 
-// Listen for message
-chrome.runtime.onMessage.addListener((request, sender, sendResponse) => {
-  if (request.type === 'COUNT') {
-    console.log(`Current count is ${request.payload.count}`);
-  }
+            if (parentDiv) {
+              const jobTitleElem = parentDiv.querySelector(
+                "[class*='job-title']"
+              ).textContent;
+              const companyName = parentDiv
+                .querySelector("[class*='company-name']")
+                .textContent.trim();
 
-  // Send an empty response
-  // See https://github.com/mozilla/webextension-polyfill/issues/130#issuecomment-531531890
-  sendResponse({});
-  return true;
+              if (jobTitleElem) {
+                console.log(jobTitleElem);
+                console.log(companyName);
+                printTodayDate();
+              } else {
+                console.log('no job title');
+              }
+              await postRequest(jobTitleElem, companyName, printTodayDate());
+            } else {
+              console.log('no parent dive!');
+            }
+          });
+          // Add the button element to the newly added node
+          node.appendChild(button);
+        }
+      });
+    }
+  });
 });
+
+// Start observing the DOM for changes
+observer.observe(document.body, {
+  childList: true,
+  subtree: true,
+});
+
+function printTodayDate() {
+  const today = new Date();
+  console.log(today.toDateString());
+  return today;
+}
