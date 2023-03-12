@@ -23,24 +23,24 @@ const SignUp = () => {
 
   return (
     <div className="signup-wrapper">
-      <div className="form-wrapper">
-        <h2>Sign Up</h2>
+      <h2 style ={{display:"flex",justifyContent: "center", alignItems: "center", paddingTop: "90px", fontSize: "80px"}}>Sign Up</h2>
+      <div style={{display:"flex", justifyContent: "center", alignItems: "center", paddingTop: "60px"}}className="form-wrapper">
         <form>
           <div className='username'>
             <label htmlFor="username">Username</label>
             <input type='text' name='username' onChange={e => setUsername(e.target.value)} />
           </div>
-          <div className='email'>
-            <label htmlFor="email">Email</label>
-            <input type='email' name='email' onChange={e => setEmail(e.target.value)} />
-          </div>
           <div className='password'>
             <label htmlFor="password">Password</label>
             <input type='password' name='password' onChange={e => setPassword(e.target.value)} />
           </div>
-          <div className='submit'>
-            <button onClick={handleSubmit}>Sign Up</button>
+          <div className='email'>
+            <label htmlFor="email">Email</label>
+            <input type='email' name='email' onChange={e => setEmail(e.target.value)} />
           </div>
+          <div style={{clear:"both", display: "block"}}className='submit'>
+            <button style={{marginTop: "50px" }}onClick={handleSubmit}>Sign Up</button>
+      </div>
         </form>
       </div>
     </div>

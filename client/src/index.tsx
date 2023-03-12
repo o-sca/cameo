@@ -20,7 +20,7 @@ function Main() {
           <Route index element={<App />} />
           <Route path="login" element={<Login />} />
           <Route path="signup" element={<SignUp />} />
-          <Route path="dashboard" element={<Dashboard jobInformation={jobInformation} setJobInformation={setJobInformation} />} />
+          <Route path="dashboard" element={<Dashboard />} />
         </Routes>
       </BrowserRouter>
     </React.StrictMode>

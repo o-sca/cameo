@@ -1,3 +1,4 @@
+import { Center } from "@chakra-ui/react";
 import React, { useState } from "react";
 import { useNavigate } from "react-router-dom"
 import { signIn } from "../services/Auth";
@@ -33,26 +34,29 @@ const Login = () => {
 
     navigate("/dashboard");
   }
-
   return (
-    <div>
-      <h2>Login</h2>
-      <form>
+    <div >
+      <h2 style ={{display:"flex",justifyContent: "center", alignItems: "center", paddingTop: "90px", fontSize: "80px"}}>Login</h2>
+      <form style={{display:"flex", justifyContent: "center", alignItems: "center", paddingTop: "60px"}}>
+      <label htmlFor="Username">Username:</label>
         <input
           type="text"
           name="Username"
           value={username}
           onChange={(e) => setUsername(e.target.value)}
         />
+        <div style ={{display:"block"}}> </div>
+        <label style={{paddingLeft: "25px"}} htmlFor="Password">Password:</label>
         <input
           type="password"
           name="Password"
           onChange={(e) => setPassword(e.target.value)}
         />
-        <div className='submit'>
+      </form>
+  
+      <div className='submit' style={{paddingTop: "50px"}}>
           <button style={isDisabled ? styles.buttonDisabled : styles.button} onClick={handleSubmit}>Login</button>
         </div>
-      </form>
     </div>
   )
 }

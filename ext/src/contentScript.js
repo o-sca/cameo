@@ -11,13 +11,14 @@ const observer = new MutationObserver((mutations) => {
           image_button.className = 'my-image';
           image_button.addEventListener('click', async () => {
             const parentDiv = node.parentElement.parentElement;
+            console.log(parentDiv.parentElement.parentElement.textContent);
 
             if (parentDiv) {
               const jobTitleElem = parentDiv.querySelector(
-                "[class='job-title']"
+                "[class*='job-title']"
               ).textContent;
               const companyName = parentDiv
-                .querySelector("[class='company-name']")
+                .querySelector("[class*='company-name']")
                 .textContent.trim();
 
               if (jobTitleElem) {
@@ -27,6 +28,8 @@ const observer = new MutationObserver((mutations) => {
               } else {
                 console.log('no job title');
               }
+
+              console.log(jobTitleElem, companyName);
               await postRequest(jobTitleElem, companyName, printTodayDate());
             } else {
               console.log('no parent dive!');
@@ -49,4 +52,5 @@ observer.observe(document.body, {
 function printTodayDate() {
   const today = new Date();
   console.log(today.toDateString());
+  return today.toDateString();
 }

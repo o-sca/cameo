@@ -5,7 +5,7 @@ async function extensionLoginRequest() {
   let password = document.getElementById('password').value;
 
   const URL =
-    'https://5d2e-2001-569-70c7-4300-8095-1aac-6db8-57ad.ngrok.io/api/v1/signin';
+    'https://6af8-2001-569-70c7-4300-8095-1aac-6db8-57ad.ngrok.io/api/v1/signin';
 
   const options = {
     method: 'POST',
@@ -19,7 +19,7 @@ async function extensionLoginRequest() {
   try {
     const { data } = await axios(options);
     if (data.authenticated) {
-      localStorage.setItem('Username', options.data.username);
+      localStorage.setItem('user_id', data.user_id);
       localStorage.setItem('Authenticated', true);
       window.location.replace('popup.html');
     }
