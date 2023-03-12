@@ -1,13 +1,104 @@
-body {
+/* Normalize CSS */
+*,
+*::before,
+::after {
   margin: 0;
-  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
-    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
-    sans-serif;
+  padding: 0;
+}
+
+/* Font */
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;600&family=Sora&display=swap');
+
+/* Global */
+:root {
+  --primary: #2640FF;
+  --primary-text: #0C1A7D;
+  --secondary: #F7C32F;
+  --secondary-light: #FDEDC1;
+  --white: #FFF;
+}
+
+body {
+  width: 100vw;
+  height: 100vh;
+  font-family: 'Inter', sans-serif;
+  color: var(--primary-text);
+  background: linear-gradient(white, var(--secondary-light));
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }
 
-code {
-  font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
-    monospace;
+a {
+  text-decoration: none;
+  color: var(--primary-text);
+}
+
+h1 {
+  font-family: 'Sora', sans-serif;
+}
+
+.container {
+  margin: 0 160px;
+}
+
+.content {
+  background-color: var(--white);
+  padding: 3rem;
+  border-radius: 10px;
+  border: 1px solid var(--secondary);
+  margin: 3rem 0;
+}
+
+/* Content */
+header {
+  width: 100%;
+  height: 80px;
+  background-color: white;
+  box-shadow: rgba(0, 0, 0, 0.1) 0px 4px 12px;
+  margin-bottom: 60px;
+}
+
+.header-content {
+  height: 80px;
+  margin: 0 160px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0 10px;
+}
+
+.header-content a {
+  font-weight: 600;
+}
+
+img {
+  width: 120px;
+  height: auto;
+}
+
+.input-btns {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+.edit-btn,
+.delete-btn {
+  width: 140px;
+  border: none;
+  border-radius: 10px;
+  background-color: var(--secondary);
+  color: white;
+  padding: 16px;
+  margin-left: 24px;
+  font-weight: 600;
+  cursor: pointer;
+}
+
+.delete-btn {
+  background-color: var(--primary-text);
+}
+
+hr {
+  border-color: inherit;
+  margin-bottom: 1rem;
 }
