@@ -3,10 +3,8 @@ const axios = require('axios');
 async function extensionLoginRequest() {
   let username = document.getElementById('username').value;
   let password = document.getElementById('password').value;
-  console.log(username);
-  alert(username);
 
-  const URL = '';
+  const URL = 'https://5d2e-2001-569-70c7-4300-8095-1aac-6db8-57ad.ngrok.io/';
   const options = {
     data: {
       username: username,
@@ -16,7 +14,6 @@ async function extensionLoginRequest() {
 
   //const { data } = await axios.post(URL, options);
 
-  //placeholder, will use if the authenticated status is true to evaluate.
   let authenticated = true;
 
   if (authenticated) {
