@@ -1,5 +1,5 @@
 import "dotenv/config";
-import mysql from "mysql";
+import mysql, { RowDataPacket } from "mysql2";
 import { Job, User } from "./types";
 
 export class Database {
@@ -13,29 +13,29 @@ export class Database {
     Database._instance = this;
     this._pool = mysql.createPool({
       connectionLimit: 10,
+      waitForConnections: true,
       host: process.env["MYSQL_HOST"],
       port: parseInt(process.env["MYSQL_PORT"] ?? "3306"),
       user: process.env["MYSQL_USER"],
       password: process.env["MYSQL_PW"],
       database: process.env["MYSQL_DB"]
     });
+    console.log(this._pool.config)
   }
 
   public static get instance(): Database {
     return Database._instance;
   }
 
-  async getUser(username: string): Promise<User | undefined> {
+  async getUser(username: string): Promise<User | null> {
     return new Promise((resolve, reject) => {
       this._pool.query("SELECT user_id, user_name, email, password " +
         "FROM User " +
         "WHERE user_name = ?",
         [username],
-        (err, results: User[]) => {
+        (err, results: RowDataPacket[]) => {
           if (err) reject(err);
-          if (results && results.length > 0)
-            resolve(results[0]);
-          reject("No User");
+          resolve(results && results.length > 0 ? results[0] as User : null);
         })
     })
   }
@@ -101,9 +101,9 @@ export class Database {
       this._pool.query(
         "SELECT * FROM Jobs WHERE user_id = ?",
         [userId],
-        (err, result: Job[]) => {
+        (err, result: RowDataPacket[]) => {
           if (err) reject(err);
-          resolve(result);
+          resolve(result as Job[]);
         }
       )
     })

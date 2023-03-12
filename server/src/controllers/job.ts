@@ -13,7 +13,6 @@ export class JobController {
 
   async postJob(req: CustomRequest<JobBody>, res: Response) {
     const { jobTitle, jobUrl, userId, companyTitle, currentDate } = req.body;
-
     const response = await Database.instance.addJob({
       userId: userId,
       jobTitle: jobTitle,

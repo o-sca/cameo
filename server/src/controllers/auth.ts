@@ -33,6 +33,7 @@ export class AuthController {
     }
 
     const userInfo = await Database.instance.getUser(username)
+
     req.session.cookie.maxAge = AuthController._expireTime;
     req.session.authenticated = true;
     req.session.username = username;
