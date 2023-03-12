@@ -24,7 +24,7 @@
         "https://www.linkedin.com/jobs/search*"
       ],
       "run_at": "document_idle",
-      "js": ["contentScript.js", "extensionLogin.js"],
+      "js": ["contentScript.js", "extensionLogin.js", "popup.js"],
       "css": ["styles.css"]
     }
   ],

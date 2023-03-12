@@ -1,13 +1,12 @@
 /* Normalize CSS */
 *,
 *::before,
-*::after {
+::after {
   margin: 0;
   padding: 0;
   box-sizing: border-box;
 }
 
-/* Colours */
 :root {
   --primary: #2640FF;
   --primary-text: #0C1A7D;
@@ -16,7 +15,6 @@
   --white: #FFF;
 }
 
-/* Typography */
 body {
   font-family: 'Inter', sans-serif;
   font-weight: 400;
@@ -36,7 +34,6 @@ h2 {
   font-weight: 400;
 }
 
-/* Layout */
 body {
   display: flex;
   justify-content: center;
@@ -55,7 +52,6 @@ body {
   margin-bottom: 2.5rem;
 }
 
-/* Content */
 h1 {
   font-style: italic;
 }
