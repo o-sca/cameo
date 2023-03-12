@@ -1,33 +1,35 @@
 <!DOCTYPE html>
 <html lang="en">
   <head>
-    <meta charset="UTF-8" />
-    <title>My Chrome Extension</title>
-    <link rel="stylesheet" href="popup.css" />
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cameo</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" type="text/css" href="popup.css">
   </head>
   <body>
-    <div class="app">
-      <div>
-        <img src="" alt="Cameo logo">
+    <div class="container">
+      <div class="header">
+        <div class="logo">
+          <img src="icons/cameo-logo.svg" alt="Cameo logo">
+        </div>
+        <h1 class="p">Track your job search with ease.</h1>
+        <hr>
       </div>
-      <h1>Track your job search with ease.</h1>
-      <hr>
-      <h2>How it works:</h2>
-      <p>Simply click the Cameo icon next to a job posting and it'll automatically be saved to yoru cameo sheet </p>
-      <p class="counter-label">Cameo</p>
-      <div id="counter" class="counter"></div>
-      <div class="button-container">
-        <button id="decrementBtn" class="button">Open Cameo -></button>
+      <div class="how-it-works">
+        <h2>How it works:</h2>
+        <p>Simply click the Cameo icon next to a job posting and it'll automatically be saved to your Cameo Sheet &nbsp;🤟</p>
       </div>
-
-      <hr class="divider" />
-
-      <p class="title">Chrome Extension is Ready!</p>
-      <p class="subtitle">Start by updating <code>popup.html</code></p>
+      <div class="cameo-button">
+        <button>OPEN CAMEO &nbsp;▸</button>
+      </div>
+      <div class="footer">
+        <hr>
+        <p class="copyright">© 2023 Cameo Inc. All rights reserved.</p>
+      </div>
     </div>
-
     <script src="popup.js"></script>
-
     <!--
       This HTML file opens when you click on icon from the toolbar.
 
