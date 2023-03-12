@@ -22,7 +22,8 @@
   "content_scripts": [
     {
       "matches": [
-        "<all_urls>"
+        "https://www.linkedin.com/jobs/collections/recommended/*",
+        "https://www.linkedin.com/jobs/search*"
       ],
       "run_at": "document_idle",
       "js": [
@@ -31,17 +32,5 @@
       "css": ["styles.css"]
 
     }
-  ],
-  "web_accessible_resources": [
-    {
-      "resources": [
-        "test.png",
-        "cameo-icon.svg",
-        "assets/delete.png",
-        "assets/save.png"
-      ],
-      "matches": [
-        "<all_urls>"
-      ]   }
   ]
 }

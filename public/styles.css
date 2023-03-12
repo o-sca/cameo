@@ -1,6 +1,15 @@
 .my-image {
-  width: 8.75rem;
+  width: 110px;
   height: auto;
-  margin-bottom: 0.8rem;
+  background-color: #FDEDC1;
+  padding: 1rem 1.5rem;
+  border-radius: 3rem;
+  border: 1px solid blue;
+  cursor: pointer;
+  margin-left: 8px;
 }
   
+.my-image:hover {
+  background-color: rgb(38, 64, 255, 0.15);
+  border: 2px solid blue;
+}
