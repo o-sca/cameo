@@ -1,8 +1,6 @@
 import postRequest from './request';
 
 // Create a MutationObserver object
-const applicationInformation = {};
-
 const observer = new MutationObserver((mutations) => {
   // Iterate through all the mutations
   mutations.forEach((mutation) => {
@@ -13,9 +11,17 @@ const observer = new MutationObserver((mutations) => {
         // Check if the node has the class name "my-class"
         if (node.className === 'display-flex') {
           // Create a button element
-          const button = document.createElement('button');
-          button.textContent = 'Click me!';
-          button.className = 'my-button';
+          // const button = document.createElement("button");
+          // button.textContent = "Click me!";
+          // button.className = "my-button";
+
+          const button = document.createElement('img');
+          button.src = 'test.png';
+          button.alt = 'My clickable image';
+          // image.className = "my-image";
+          // button.classList.add("my-image");
+
+          button.className = 'my-image';
 
           // Get the text content of the parent div
 
