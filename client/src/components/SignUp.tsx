@@ -1,14 +1,23 @@
 import { useState } from "react";
+import { useNavigate } from "react-router-dom";
 import { register } from "../services/Auth";
 
 const SignUp = () => {
+  const navigate = useNavigate();
   const [username, setUsername] = useState<string>("");
   const [password, setPassword] = useState<string>("");
   const [email, setEmail] = useState<string>("");
 
   const handleSubmit = async (event: React.FormEvent<HTMLButtonElement>) => {
-    // event.preventDefault()
-    await register(username, password, email);
+    event.preventDefault()
+    const response = await register(username, password, email);
+
+    if (response.authenticated) {
+      localStorage.setItem("authenticated", "true");
+      localStorage.setItem("username", response.username);
+      localStorage.setItem("userId", response.user_id);
+      navigate("/dashboard");
+    }
   }
 
   return (

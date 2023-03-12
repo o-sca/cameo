@@ -10,6 +10,12 @@ import { ApiRouter } from "./routes/api";
 import { HomeRouter } from "./routes/home";
 import { CatchRouter } from "./routes/catch";
 
+declare module "express-session" {
+  interface SessionData {
+    username: string;
+    authenticated: boolean;
+  }
+}
 
 export class ServerInstance {
   private static _instance: ServerInstance = new ServerInstance();
@@ -30,9 +36,11 @@ export class ServerInstance {
 
   public create(mongoUrl: string): express.Application {
     this.app.use(express.static(path.join(__dirname, "build")));
-    this.app.use(cors());
     this.app.use(morgan("combined"));
     this.app.use(json({ limit: '50mb' }));
+    this.app.use(cors({
+      credentials: true
+    }));
     this.app.use(session({
       secret: "secret",
       resave: false,

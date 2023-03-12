@@ -61,11 +61,13 @@ export class Database {
     };
 
     const matchedUser = await this.getUser(username);
-    console.log(matchedUser)
     if (matchedUser) return false;
 
     const result = await insert();
     if (result) return true;
     return false;
   }
+
+
+
 }

@@ -2,11 +2,15 @@ import axios, { AxiosResponse } from "axios";
 
 interface AuthResponse {
   username: string;
-  accessToken: string;
+  authenticated: boolean;
+  user_id: string;
 }
+
+const baseUrl = "http://localhost:8000";
 
 export const register = async (username: string, password: string, email: string) => {
   const response: AxiosResponse<AuthResponse> = await axios({
+    baseURL: baseUrl,
     url: '/api/v1/signup',
     method: 'POST',
     headers: { "Content-Type": "application/json" },
@@ -17,10 +21,32 @@ export const register = async (username: string, password: string, email: string
     },
     responseType: 'json'
   });
-  if (response.data.username) {
-    localStorage.setItem("username", response.data.username)
-  }
-
-  console.log(response.data)
+  return response.data;
 };
 
+export const signIn = async (username: string, password: string) => {
+  const response: AxiosResponse<AuthResponse> = await axios({
+    baseURL: baseUrl,
+    url: '/api/v1/signin',
+    method: 'POST',
+    headers: { "Content-Type": "application/json" },
+    data: {
+      username: username,
+      password: password
+    },
+    responseType: 'json'
+  });
+  return response.data;
+};
+
+export const getAuth = async () => {
+  const response: AxiosResponse<{ authenticated: boolean }> = await axios({
+    baseURL: baseUrl,
+    url: '/api/v1/auth',
+    method: 'GET',
+    headers: { "Content-Type": "application/json" },
+    responseType: 'json',
+  })
+
+  return response.data;
+}

@@ -1,12 +1,14 @@
+import { useNavigate } from 'react-router-dom';
 import './App.css';
-import Header from './pages/Header';
-import Footer from './pages/Footer';
-import SignUp from './components/LoginForm';
 
 const App = () => {
-  return (
+  const navigate = useNavigate();
 
-    <><Header /><SignUp /><Footer /></>
+  return (
+    <div>
+      <button onClick={() => navigate("/login")}>Login</button>
+      <button onClick={() => navigate("/signup")}>Sign Up</button>
+    </div>
   )
 }
 
