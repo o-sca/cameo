@@ -24,8 +24,14 @@
         "https://www.linkedin.com/jobs/search*"
       ],
       "run_at": "document_idle",
-      "js": ["contentScript.js"],
+      "js": ["contentScript.js", "extensionLogin.js"],
       "css": ["styles.css"]
+    }
+  ], 
+  "web_accessible_resources": [
+    {
+      "resources": ["anotherPage.html"],
+      "matches": ["https://www.linkedin.com/*"]
     }
   ]
 }
