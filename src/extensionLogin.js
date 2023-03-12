@@ -1,14 +1,35 @@
 const axios = require('axios');
 
 async function extensionLoginRequest() {
-  let username = document.getElementById('username');
-  let password = document.getElementById('password');
-  console.log(username, password);
+  let username = document.getElementById('username').value;
+  let password = document.getElementById('password').value;
+  console.log(username)
+  alert(username)
+
+  const URL = ""
+  const options = {
+    data: {
+      "username": username,
+      "password": password, 
+    }
+  };
+
+  //const { data } = await axios.post(URL, options); 
+
+  //placeholder, will use if the authenticated status is true to evaluate.
+  let authenticated = true;
+
+  if (authenticated) {
+    window.location.href = "popup.html"
+  } else {
+    alert("Please enter the correct login details!");
+  }
+
 }
 
 document.addEventListener('DOMContentLoaded', async function () {
   var btn = document.getElementById('submitBtn');
-  btn.addEventListener('click', function () {
-    alert('button clicked');
-  });
+  console.log(btn);
+  
+  btn.addEventListener('click', extensionLoginRequest);
 });
