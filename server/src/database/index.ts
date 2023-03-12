@@ -33,7 +33,9 @@ export class Database {
         [username],
         (err, results: User[]) => {
           if (err) reject(err);
-          resolve(results[0]);
+          if (results && results.length > 0)
+            resolve(results[0]);
+          reject("No User");
         })
     })
   }
