@@ -14,11 +14,9 @@
   },
   "action": {
     "default_title": "Cameo",
-    "default_popup": "popup.html"
+    "default_popup": "login.html"
   },
-  "permissions": [
-    "storage"
-  ],
+  "permissions": ["storage"],
   "content_scripts": [
     {
       "matches": [
@@ -26,11 +24,8 @@
         "https://www.linkedin.com/jobs/search*"
       ],
       "run_at": "document_idle",
-      "js": [
-        "contentScript.js"
-      ],
+      "js": ["contentScript.js"],
       "css": ["styles.css"]
-
     }
   ]
 }
