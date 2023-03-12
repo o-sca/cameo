@@ -1,5 +1,3 @@
-# Untitled
-
 ![cameo-logo-final.svg](icons/cameo-logo-final.svg)
 
 *Track your job search with ease*
