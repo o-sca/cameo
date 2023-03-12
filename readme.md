@@ -6,6 +6,16 @@ Cameo is a browser extension that allows users to scrape job listings from Linke
 
 ****
 
+#### Dashboard
+![full](icons/full.png)
+
+#### Pop up
+![popup](icons/popup.png)
+
+#### Full View
+![dashboard](icons/dashboard.png)
+
+
 **Directory**
 
 ```html
