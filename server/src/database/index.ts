@@ -1,6 +1,6 @@
 import "dotenv/config";
 import mysql from "mysql";
-import { User } from "./types";
+import { Job, User } from "./types";
 
 export class Database {
   private _pool: mysql.Pool;
@@ -69,5 +69,42 @@ export class Database {
   }
 
 
+  async addJob({
+    userId,
+    jobTitle,
+    jobUrl,
+    companyTitle,
+    currentDate
+  }: {
+    userId: number;
+    jobTitle: string;
+    jobUrl: string;
+    companyTitle: string;
+    currentDate: string;
+  }) {
+    return new Promise((resolve, reject) => {
+      this._pool.query(
+        "INSERT INTO Jobs (user_id, job_title, url, company_name, date_posted) VALUES (?, ?, ?, ?, ?)",
+        [userId, jobTitle, jobUrl, companyTitle, currentDate],
+        (err, result) => {
+          if (err) reject(err);
+          resolve(result);
+        }
+      )
+    })
+  }
+
+  async getJobsById(userId: number): Promise<Job[] | undefined> {
+    return new Promise((resolve, reject) => {
+      this._pool.query(
+        "SELECT * FROM Jobs WHERE user_id = ?",
+        [userId],
+        (err, result: Job[]) => {
+          if (err) reject(err);
+          resolve(result);
+        }
+      )
+    })
+  }
 
 }

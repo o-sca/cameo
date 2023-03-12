@@ -17,6 +17,7 @@ export class ApiRouter extends BaseRouter {
     this.router.post("/signin", this.auth.postLogin);
 
     this.router.post("/job", this.job.postJob);
+    this.router.post("/alljobs", this.job.getJobById);
 
     this.router.get("/auth", this.auth.getAuth);
 
