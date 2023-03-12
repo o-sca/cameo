@@ -50,3 +50,12 @@ if (authenticated) {
       </div>
     </div>`;
 }
+
+document.addEventListener('DOMContentLoaded', async function() {
+  const button = document.getElementById("open-cameo");
+  if (button) {
+    button.addEventListener('click', () => {
+      chrome.tabs.create({ url: 'http://localhost:3000/', active: true });
+    });
+  }
+})
