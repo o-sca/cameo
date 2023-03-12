@@ -15,7 +15,7 @@ const observer = new MutationObserver((mutations) => {
 
 
           // Get the text content of the parent div
-          const parentDivText = node.parentElement.textContent;
+          const parentDivText = node.parentElement.parentElement.textContent;
 
           // Add a click event listener to the button to log the parent div text
           button.addEventListener("click", () => {
