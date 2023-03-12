@@ -23,13 +23,18 @@ export class AuthController {
 
     const success = await Database.instance.addUser({ username: username, email: email, password: hashedPassword });
 
-    console.log(success);
+    if (!success) {
+      console.error("Not good")
+      res.json({})
+      return;
+    }
 
-    //req.session.authenticated = true;
-    //req.session.username = username;
     req.session.cookie.maxAge = AuthController._expireTime;
 
-    res.send("OK");
+    res.json({
+      accessToken: "1"
+    });
+
     return;
   }
 }

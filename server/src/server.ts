@@ -1,11 +1,13 @@
 import "dotenv/config";
+import path from "path";
 import MongoStore from "connect-mongo";
 import cors from "cors";
-import express, { urlencoded, json } from "express";
+import express, { json } from "express";
 import session from "express-session";
 import morgan from "morgan";
 
 import { ApiRouter } from "./routes/api";
+import { HomeRouter } from "./routes/home";
 import { CatchRouter } from "./routes/catch";
 
 
@@ -27,10 +29,10 @@ export class ServerInstance {
   }
 
   public create(mongoUrl: string): express.Application {
+    this.app.use(express.static(path.join(__dirname, "build")));
     this.app.use(cors());
     this.app.use(morgan("combined"));
     this.app.use(json({ limit: '50mb' }));
-    this.app.use(urlencoded({ limit: "50mb", extended: true, parameterLimit: 500000 }));
     this.app.use(session({
       secret: "secret",
       resave: false,
@@ -38,9 +40,9 @@ export class ServerInstance {
       store: MongoStore.create({ mongoUrl: mongoUrl })
     }));
 
+    this.app.use("/", new HomeRouter().open());
     this.app.use("/api/v1", new ApiRouter().open());
     this.app.use("/*", new CatchRouter().open());
-    //this.app.use("/webhook/", createWebhookRouter());
     return this.app;
   }
 }
