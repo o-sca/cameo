@@ -1,8 +1,6 @@
-.my-button {
-    background-color: blue;
-    color: white;
-    border: none;
-    padding: 10px;
-    border-radius: 5px;
-    margin-left: 10px;
-  }
+.my-image {
+  width: 8.75rem;
+  height: auto;
+  margin-bottom: 0.8rem;
+}
+  

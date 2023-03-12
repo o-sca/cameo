@@ -31,5 +31,17 @@
       "css": ["styles.css"]
 
     }
+  ],
+  "web_accessible_resources": [
+    {
+      "resources": [
+        "test.png",
+        "cameo-icon.svg",
+        "assets/delete.png",
+        "assets/save.png"
+      ],
+      "matches": [
+        "<all_urls>"
+      ]   }
   ]
 }
